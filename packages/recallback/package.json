@@ -1,0 +1,37 @@
+{
+  "name": "recallback",
+  "version": "0.0.0",
+  "description": "A React hook for creating cached callback",
+  "author": "linq2js <linqtojs@gmail.com>",
+  "repository": {
+    "url": "https://github.com/linq2js/recallback"
+  },
+  "homepage": "https://linq2js.github.io/recallback/",
+  "license": "ISC",
+  "main": "dist/tsc/main.js",
+  "types": "dist/tsc/main.d.ts",
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib",
+    "dist/tsc"
+  ],
+  "keywords": [],
+  "dependencies": {
+    "axios": "^0.27.2"
+  },
+  "peerDependencies": {
+  },
+  "peerDependenciesMeta": {
+  },
+  "scripts": {
+    "prepublishOnly": "yarn test && yarn && yarn build",
+    "lint": "eslint lib/ --ext .js,.jsx,.ts,.tsx",
+    "test": "jest --passWithNoTests",
+    "clean": "rm -rf dist build package",
+    "ts-node": "ts-node",
+    "build": "rimraf dist && tsc"
+  },
+  "gitHead": "8ca5b169e55a6531da7f9b5f4fb8023dc1666bf5"
+}
