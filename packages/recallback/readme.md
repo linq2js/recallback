@@ -45,14 +45,37 @@ import useCallback from "recallback";
 
 function TodoList({ todos }) {
   const handleToggleOf = useCallback((todoId) =>
-    // return a click callback
+    // return a click callback for each todo item
+    // recallback will cache this callback as well
     () => {
       // do something
     }
   );
 
-  return todos.map((id) => (
-    <TodoItem key={id} id={id} onToggle={handleToggleOf(id)} />
+  return todos.map((todo) => (
+    <TodoItem key={todo.id} id={todo.id} onToggle={handleToggleOf(todo.id)} />
+  ));
+}
+```
+
+### Using key selector for callback factory
+
+By default, recallback uses first argument as callback, if the first argument is complex object, you can pass key selector to indicate which value is a key
+
+```js
+import useCallback from "recallback";
+
+function TodoList({ todos }) {
+  const handleToggleOf = useCallback(
+    (todo) => () => {
+      // do something
+    },
+    // select todo id from todo object
+    (todo) => todo.id
+  );
+
+  return todos.map((todo) => (
+    <TodoItem key={todo.id} id={todo.id} onToggle={handleToggleOf(todo)} />
   ));
 }
 ```

@@ -24,7 +24,7 @@ const createCacheItem = (cache: Map<any, any>) => {
       const result = currentCallback(...args);
       // if the result is function, that means the input is callback factory
       // we should create a cache item for each key
-      if (typeof result === "function") {
+      if (args.length && typeof result === "function") {
         // the key might be first argument or result of getKey()
         // user can use getKey() to serialize or generate hash code from list of arguments
         const key = currentGetKey ? currentGetKey(...args) : args[0];
@@ -43,7 +43,7 @@ const createCacheItem = (cache: Map<any, any>) => {
 };
 
 /**
- *
+ * create a cached callback
  * @param callback
  * @param getKey
  * @returns
