@@ -9,13 +9,13 @@ Inspired by this RFC https://github.com/reactjs/rfcs/blob/useevent/text/0000-use
 **with NPM**
 
 ```bash
-npm i apiiz --save
+npm i recallback --save
 ```
 
 **with YARN**
 
 ```bash
-yarn add apiiz
+yarn add recallback
 ```
 
 ## Usages
