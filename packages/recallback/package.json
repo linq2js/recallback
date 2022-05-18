@@ -1,6 +1,6 @@
 {
   "name": "recallback",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "A React hook for creating cached callback",
   "author": "linq2js <linqtojs@gmail.com>",
   "repository": {
@@ -18,8 +18,6 @@
     "dist/tsc"
   ],
   "keywords": [],
-  "dependencies": {},
-  "peerDependencies": {},
   "peerDependenciesMeta": {},
   "scripts": {
     "prepublishOnly": "yarn test && yarn && yarn build",
