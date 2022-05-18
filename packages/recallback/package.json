@@ -18,13 +18,9 @@
     "dist/tsc"
   ],
   "keywords": [],
-  "dependencies": {
-    "axios": "^0.27.2"
-  },
-  "peerDependencies": {
-  },
-  "peerDependenciesMeta": {
-  },
+  "dependencies": {},
+  "peerDependencies": {},
+  "peerDependenciesMeta": {},
   "scripts": {
     "prepublishOnly": "yarn test && yarn && yarn build",
     "lint": "eslint lib/ --ext .js,.jsx,.ts,.tsx",
