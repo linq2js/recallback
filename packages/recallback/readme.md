@@ -28,9 +28,11 @@ import useCallback from "recallback";
 function Chat() {
   const [text, setText] = useState("");
 
-  const onClick = useCallback(() => {
-    sendMessage(text);
-  });
+  const onClick = useCallback(
+    () => {
+      sendMessage(text);
+    } /* no deps needed */
+  );
 
   return <SendButton onClick={onClick} />;
 }
