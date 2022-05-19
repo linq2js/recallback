@@ -43,10 +43,10 @@ function Chat() {
 Let say you have a todo list, and you want to handle toggle/remove action for each todo item, please check example below
 
 ```js
-import useCallback from "recallback";
+import useCachedCallback from "recallback";
 
 function TodoList({ todos }) {
-  const handleToggleOf = useCallback((todoId) =>
+  const handleToggleOf = useCachedCallback((todoId) =>
     // return a click callback for each todo item
     // recallback will cache this callback as well
     () => {
@@ -65,10 +65,10 @@ function TodoList({ todos }) {
 By default, recallback uses first argument as callback, if the first argument is complex object, you can pass key selector to indicate which value is a key
 
 ```js
-import useCallback from "recallback";
+import useCachedCallback from "recallback";
 
 function TodoList({ todos }) {
-  const handleToggleOf = useCallback(
+  const handleToggleOf = useCachedCallback(
     (todo) => () => {
       // do something
     },
@@ -79,5 +79,40 @@ function TodoList({ todos }) {
   return todos.map((todo) => (
     <TodoItem key={todo.id} id={todo.id} onToggle={handleToggleOf(todo)} />
   ));
+}
+```
+
+### Optimizing for children function
+
+```jsx
+import { memo, ReactNode, useEffect, useState } from "react";
+import useCachedCallback from "recallback";
+import "./styles.css";
+
+const LoadContent = memo((props) => {
+  const [loading, setLoading] = useState(true);
+  console.log("re-render");
+  useEffect(() => {
+    setTimeout(setLoading, 10000, false);
+  }, [setLoading]);
+
+  // call children
+  return <div>{props.children(loading)}</div>;
+});
+
+export default function App() {
+  const [counter, setCounter] = useState(0);
+  const renderContent = useCachedCallback((loading) => {
+    return <span>{loading && "Loading..."}</span>;
+  });
+
+  return (
+    <div className="App">
+      <button onClick={() => setCounter(counter + 1)}>
+        Counter: {counter}
+      </button>
+      <LoadContent>{renderContent}</LoadContent>
+    </div>
+  );
 }
 ```
