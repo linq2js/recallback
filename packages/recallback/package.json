@@ -17,7 +17,13 @@
     "lib",
     "dist/tsc"
   ],
-  "keywords": [],
+  "keywords": [
+    "react",
+    "hooks",
+    "useEvent",
+    "useCallback",
+    "cache"
+  ],
   "peerDependenciesMeta": {},
   "scripts": {
     "prepublishOnly": "yarn test && yarn && yarn build",
