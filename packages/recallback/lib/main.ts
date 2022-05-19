@@ -50,7 +50,7 @@ const createCacheItem = (cache: Map<any, any>, depth: number) => {
  * @param getKey
  * @returns
  */
-const useCachedCallback = <T extends (...args: any[]) => any>(
+const useCallback = <T extends (...args: any[]) => any>(
   callback: T,
   getKey: (...args: Parameters<T>) => unknown = defaultGetKey
 ) => {
@@ -70,4 +70,4 @@ const useCachedCallback = <T extends (...args: any[]) => any>(
   return item.wrapper;
 };
 
-export default useCachedCallback;
+export default useCallback;

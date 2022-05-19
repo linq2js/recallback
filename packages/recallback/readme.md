@@ -43,10 +43,10 @@ function Chat() {
 Let say you have a todo list, and you want to handle toggle/remove action for each todo item, please check example below
 
 ```js
-import useCachedCallback from "recallback";
+import useCallback from "recallback";
 
 function TodoList({ todos }) {
-  const handleToggleOf = useCachedCallback((todoId) =>
+  const handleToggleOf = useCallback((todoId) =>
     // return a click callback for each todo item
     // recallback will cache all callbacks
     () => {
@@ -65,10 +65,10 @@ function TodoList({ todos }) {
 By default, recallback uses first argument as callback, if the first argument is complex object, you can pass key selector to indicate which value is a key
 
 ```js
-import useCachedCallback from "recallback";
+import useCallback from "recallback";
 
 function TodoList({ todos }) {
-  const handleToggleOf = useCachedCallback(
+  const handleToggleOf = useCallback(
     (todo) => () => {},
     // select todo id from todo object
     (todo) => todo.id
@@ -84,7 +84,7 @@ function TodoList({ todos }) {
 
 ```jsx
 import { memo, ReactNode, useEffect, useState } from "react";
-import useCachedCallback from "recallback";
+import useCallback from "recallback";
 import "./styles.css";
 
 const LoadContent = memo((props) => {
@@ -100,7 +100,7 @@ const LoadContent = memo((props) => {
 
 export default function App() {
   const [counter, setCounter] = useState(0);
-  const renderContent = useCachedCallback((loading) => {
+  const renderContent = useCallback((loading) => {
     return <span>{loading && "Loading..."}</span>;
   });
 
