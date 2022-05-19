@@ -48,7 +48,7 @@ import useCachedCallback from "recallback";
 function TodoList({ todos }) {
   const handleToggleOf = useCachedCallback((todoId) =>
     // return a click callback for each todo item
-    // recallback will cache this callback as well
+    // recallback will cache all callbacks
     () => {
       // do something
     }
@@ -69,9 +69,7 @@ import useCachedCallback from "recallback";
 
 function TodoList({ todos }) {
   const handleToggleOf = useCachedCallback(
-    (todo) => () => {
-      // do something
-    },
+    (todo) => () => {},
     // select todo id from todo object
     (todo) => todo.id
   );
